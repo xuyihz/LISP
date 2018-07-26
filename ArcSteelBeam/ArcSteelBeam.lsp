@@ -1,15 +1,15 @@
-;;;; @-Y-__-Y- 2016-5-10 ĞÇÆÚ¶ş ÌìÆøÒõÓê 
-;;;;¼ÓÔØ×Ô¶¨Òå³ÌĞò
+;;;; @-Y-__-Y- 2016-5-10 æ˜ŸæœŸäºŒ å¤©æ°”é˜´é›¨ 
+;;;;åŠ è½½è‡ªå®šä¹‰ç¨‹åº
 
-(defun C:cc() ;;;»æÖÆÒı³öÏß 
+(defun C:cc() ;ç»˜åˆ¶å¼•å‡ºçº¿ 
 
 ;;;(command "textstyle" "TSSD_REIN")
 
 (command "clayer" "Gjlx")
 (setvar "plinewid" 100)
-(setq P3 (getpoint  "Ñ¡È¡Ô²ĞÄ£¡\n"))
-(setq P4 (getpoint P3 "Ñ¡È¡Òı³öÏßµÚÒ»½Çµã£¡\n"))
-(setq P5 (getpoint P3 "Ñ¡È¡Òı³öÏßµÚ¶ş½Çµã£¡\n"))
+(setq P3 (getpoint  "é€‰å–åœ†å¿ƒï¼\n"))
+(setq P4 (getpoint P3 "é€‰å–å¼•å‡ºçº¿ç¬¬ä¸€è§’ç‚¹ï¼\n"))
+(setq P5 (getpoint P3 "é€‰å–å¼•å‡ºçº¿ç¬¬äºŒè§’ç‚¹ï¼\n"))
 
 (setq ss (getvar "osmode"))
 (setvar "osmode" 0)
