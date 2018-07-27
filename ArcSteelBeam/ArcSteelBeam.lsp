@@ -17,7 +17,7 @@
         (setq P_end_raw (getpoint "\nselect the end point of the arc beam (Counterclockwise)"))
 
         (setq osmode_backup (getvar "osmode")) ; osmode : 设置执行的对象捕捉模式
-        (setvar "osmode" 0)                    ; 0 : 无
+;        (setvar "osmode" 0)                    ; 0 : 无
 
         (setq angle_Ps_raw (angle CoC P_start_raw)) ; angle : Returns an angle in radians of a line defined by two endpoints
         (setq angle_Pe_raw (angle CoC P_end_raw))
@@ -46,6 +46,6 @@
 
         (setq P_start_raw P_end_raw) ; 设 P_end_raw 为 P_start_raw，画下一个弧梁。
         (command "clayer" "0")
-        (setvar "osmode" osmode_backup)
+;        (setvar "osmode" osmode_backup)
     )
 )
