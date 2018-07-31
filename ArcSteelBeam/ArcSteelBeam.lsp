@@ -5,6 +5,7 @@
 
 (defun C:asb() ; defun : Defines a function
 
+    (setq osmode_backup (getvar "osmode")) ; osmode : 设置执行的对象捕捉模式
     ; 输入圆心及两端点
     (setq CoC (getpoint "\nselect the center of a circle")) ; setq : Sets the value of a symbol or symbols to associated expressions
                                         ; (setq sym expr [sym expr]...) 
@@ -19,9 +20,7 @@
                 ; (repeat int [expr...])
         (setq P_end_raw (getpoint "\nselect the end point of the arc beam (Counterclockwise)"))
 
-;        (setq osmode_backup (getvar "osmode")) ; osmode : 设置执行的对象捕捉模式
-;        (setvar "osmode" 0)                    ; 0 : 无
-
+        (setvar "osmode" 0)                    ; 0 : 无
         (setq angle_Ps_raw (angle CoC P_start_raw)) ; angle : Returns an angle in radians of a line defined by two endpoints
         (setq angle_Pe_raw (angle CoC P_end_raw))
         (setq angle_Ps (+ angle_Ps_raw angle_adjust_beam ))
@@ -46,6 +45,6 @@
 
         (setq P_start_raw P_end_raw) ; 设 P_end_raw 为 P_start_raw，画下一个弧梁。
         (command "clayer" "0")
-;        (setvar "osmode" osmode_backup)
+        (setvar "osmode" osmode_backup)
     )
 )

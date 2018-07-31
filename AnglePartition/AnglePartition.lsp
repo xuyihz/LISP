@@ -12,7 +12,7 @@
                                         ; getpoint : Pauses for user input of a point, and returns that point
                                         ; (getpoint [pt] [msg])
     (setq p_Ray1 (getpoint "\nselect point on Ray 1 (Counterclockwise)"))
-    (command "RAY" Vertex p_Ray1 "") ; 画射线
+    (command "RAY" Vertex p_Ray1 "") ; 画射线 ""可以认为是回车的意思
     (setq p_Ray2 (getpoint "\nselect point on Ray 2"))
     (command "RAY" Vertex p_Ray2 "") ; 画射线
     (setq angle_p_Ray1 (angle Vertex p_Ray1)) ; angle : Returns an angle in radians of a line defined by two endpoints
