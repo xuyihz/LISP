@@ -13,13 +13,13 @@
     (setq P_start_raw (getpoint "\nselect the start point of the arc beam (Counterclockwise)"))
     (setq radius (distance CoC P_start_raw) ) ; distance : Returns the 3D distance between two points
     (setq angle_adjust_beam (/ 400 radius) ) ; 弧梁空开柱子的位置。大概缩回400。
-    (setq angle_adjust_triangle (/ 250 radius) )
+    (setq angle_adjust_triangle (/ 250 radius) ) ; 刚接符号的高250。
 
     (repeat 101 ; repeat : Evaluates each expression a specified number of times, and returns the value of the last expression
                 ; (repeat int [expr...])
         (setq P_end_raw (getpoint "\nselect the end point of the arc beam (Counterclockwise)"))
 
-        (setq osmode_backup (getvar "osmode")) ; osmode : 设置执行的对象捕捉模式
+;        (setq osmode_backup (getvar "osmode")) ; osmode : 设置执行的对象捕捉模式
 ;        (setvar "osmode" 0)                    ; 0 : 无
 
         (setq angle_Ps_raw (angle CoC P_start_raw)) ; angle : Returns an angle in radians of a line defined by two endpoints
@@ -27,9 +27,9 @@
         (setq angle_Ps (+ angle_Ps_raw angle_adjust_beam ))
         (setq angle_Pe (- angle_Pe_raw angle_adjust_beam ))
         ; 绘制弧梁
-        (setq  P_start (polar CoC angle_Ps radius)) ; polar : Returns the UCS 3D point at a specified angle and distance from a point
+        (setq P_start (polar CoC angle_Ps radius)) ; polar : Returns the UCS 3D point at a specified angle and distance from a point
                                                     ; (polar pt ang dist)
-        (setq  P_end (polar CoC angle_Pe radius) )
+        (setq P_end (polar CoC angle_Pe radius))
         (command "clayer" "Gjlx")   ; command : Executes an AutoCAD command
                                     ; clayer : 设置当前图层。
         (setvar "plinewid" 100) ; setvar : Sets an AutoCAD system variable to a specified value
@@ -41,8 +41,8 @@
         (setq P_tri_start (polar CoC angle_tri_start radius))
         (setq P_tri_end (polar CoC angle_tri_end radius) )
         (command "clayer" "STPM_RBEAM_SIG")
-        (command "PLINE"  P_end "W" 250 0 P_tri_end "") ; 绘制刚接符号(三角形)
-        (command "PLINE"  P_start "W" 250 0 P_tri_start "")
+        (command "PLINE" P_end "W" 250 0 P_tri_end "") ; 绘制刚接符号(三角形)
+        (command "PLINE" P_start "W" 250 0 P_tri_start "")
 
         (setq P_start_raw P_end_raw) ; 设 P_end_raw 为 P_start_raw，画下一个弧梁。
         (command "clayer" "0")
