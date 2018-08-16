@@ -1,9 +1,9 @@
-﻿; Generate an Arc Steel Beam
+﻿; Generate an Curved Steel Beam
 ; 
 ; Jiang Xiong, 2018
 ; Xu Yi, 2018, revised
 
-(defun C:asb() ; defun : Defines a function
+(defun C:csb() ; defun : Defines a function
 
     (setq osmode_backup (getvar "osmode")) ; osmode : 设置执行的对象捕捉模式
     ; 输入圆心及两端点
@@ -11,14 +11,14 @@
                                         ; (setq sym expr [sym expr]...) 
                                         ; getpoint : Pauses for user input of a point, and returns that point
                                         ; (getpoint [pt] [msg]) 
-    (setq P_start_raw (getpoint "\nselect the start point of the arc beam (Counterclockwise)"))
+    (setq P_start_raw (getpoint "\nselect the start point of the curved beam (Counterclockwise)"))
     (setq radius (distance CoC P_start_raw) ) ; distance : Returns the 3D distance between two points
     (setq angle_adjust_beam (/ 400 radius) ) ; 弧梁空开柱子的位置。大概缩回400。
     (setq angle_adjust_triangle (/ 250 radius) ) ; 刚接符号的高250。
 
     (repeat 101 ; repeat : Evaluates each expression a specified number of times, and returns the value of the last expression
                 ; (repeat int [expr...])
-        (setq P_end_raw (getpoint "\nselect the end point of the arc beam (Counterclockwise)"))
+        (setq P_end_raw (getpoint "\nselect the end point of the curved beam (Counterclockwise)"))
 
         (setvar "osmode" 0)                    ; 0 : 无
         (setq angle_Ps_raw (angle CoC P_start_raw)) ; angle : Returns an angle in radians of a line defined by two endpoints
